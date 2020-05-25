@@ -26,26 +26,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var useStyle = (0, _styles.makeStyles)(function (theme) {
   return {
     root: _defineProperty({
-      boxSizing: 'border-box',
-      display: 'flex',
-      maxHeight: '100%',
-      maxWidth: '100%',
-      position: 'fixed',
-      flexDirection: 'column',
+      boxSizing: "border-box",
+      display: "flex",
+      maxHeight: "100%",
+      maxWidth: "100%",
+      position: "fixed",
+      flexDirection: "column",
       zIndex: theme.zIndex.snackbar,
-      height: 'auto',
-      width: 'auto',
+      height: "auto",
+      width: "auto",
       minWidth: 288,
-      transition: theme.transitions.create(['top', 'right', 'bottom', 'left'], {
-        easing: 'ease'
+      transition: theme.transitions.create(["top", "right", "bottom", "left"], {
+        easing: "ease"
       })
-    }, theme.breakpoints.down('xs'), {
-      left: '0 !important',
-      right: '0 !important',
-      width: '100%'
+    }, theme.breakpoints.down("xs"), {
+      left: "0 !important",
+      right: "0 !important",
+      width: "100%"
     }),
     reverseColumns: {
-      flexDirection: 'column-reverse'
+      flexDirection: "column-reverse"
     },
     top: {
       top: _constants.SNACKBAR_INDENTS.view["default"] - _constants.SNACKBAR_INDENTS.snackbar["default"]
@@ -71,9 +71,9 @@ var useStyle = (0, _styles.makeStyles)(function (theme) {
     rightDense: {
       right: _constants.SNACKBAR_INDENTS.view.dense
     },
-    center: _defineProperty({}, theme.breakpoints.up('md'), {
-      left: '50%',
-      transform: 'translateX(-50%)'
+    center: _defineProperty({}, theme.breakpoints.up("sm"), {
+      left: "50%",
+      transform: "translateX(-50%)"
     })
   };
 });
@@ -87,8 +87,8 @@ var SnackbarContainer = function SnackbarContainer(props) {
       other = _objectWithoutProperties(props, ["className", "anchorOrigin", "dense"]);
 
   var combinedClassname = (0, _clsx["default"])(classes.root, classes[anchorOrigin.vertical], classes[anchorOrigin.horizontal], // @ts-ignore
-  classes["".concat(anchorOrigin.vertical).concat(dense ? 'Dense' : '')], // @ts-ignore
-  classes["".concat(anchorOrigin.horizontal).concat(dense ? 'Dense' : '')], className, anchorOrigin.vertical === 'bottom' && classes.reverseColumns);
+  classes["".concat(anchorOrigin.vertical).concat(dense ? "Dense" : "")], // @ts-ignore
+  classes["".concat(anchorOrigin.horizontal).concat(dense ? "Dense" : "")], className, anchorOrigin.vertical === "bottom" && classes.reverseColumns);
   return _react["default"].createElement("div", _extends({
     className: combinedClassname
   }, other));
