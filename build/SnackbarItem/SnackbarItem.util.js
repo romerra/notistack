@@ -43,9 +43,9 @@ var omitNonMuiKeys = function omitNonMuiKeys(classes) {
   .filter(function (key) {
     return _constants.allClasses.mui[key] !== undefined;
   }).reduce(function (obj, key) {
-    return _objectSpread({}, obj, _defineProperty({}, key, classes[key]));
+    return _objectSpread(_objectSpread({}, obj), {}, _defineProperty({}, key, classes[key]));
   }, {});
-  return _objectSpread({}, snackbarMuiClasses, {
+  return _objectSpread(_objectSpread({}, snackbarMuiClasses), {}, {
     root: (0, _clsx["default"])(classes.root, classes.wrappedRoot)
   });
 };

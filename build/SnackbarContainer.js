@@ -89,11 +89,11 @@ var SnackbarContainer = function SnackbarContainer(props) {
   var combinedClassname = (0, _clsx["default"])(classes.root, classes[anchorOrigin.vertical], classes[anchorOrigin.horizontal], // @ts-ignore
   classes["".concat(anchorOrigin.vertical).concat(dense ? "Dense" : "")], // @ts-ignore
   classes["".concat(anchorOrigin.horizontal).concat(dense ? "Dense" : "")], className, anchorOrigin.vertical === "bottom" && classes.reverseColumns);
-  return _react["default"].createElement("div", _extends({
+  return /*#__PURE__*/_react["default"].createElement("div", _extends({
     className: combinedClassname
   }, other));
 };
 
-var _default = _react["default"].memo(SnackbarContainer);
+var _default = /*#__PURE__*/_react["default"].memo(SnackbarContainer);
 
 exports["default"] = _default;

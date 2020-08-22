@@ -69,7 +69,7 @@ var omitContainerKeys = function omitContainerKeys() {
     Object.keys(classes).filter(function (key) {
       return !allClasses.container[key];
     }).reduce(function (obj, key) {
-      return _objectSpread({}, obj, _defineProperty({}, key, classes[key]));
+      return _objectSpread(_objectSpread({}, obj), {}, _defineProperty({}, key, classes[key]));
     }, {})
   );
 };

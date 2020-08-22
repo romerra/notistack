@@ -33,11 +33,15 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -53,7 +57,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 var styles = function styles(theme) {
-  return (0, _styles.createStyles)(_objectSpread({}, _constants.allClasses.mui, {
+  return (0, _styles.createStyles)(_objectSpread(_objectSpread({}, _constants.allClasses.mui), {}, {
     base: _defineProperty({
       fontSize: "0.875rem",
       lineHeight: "1.46429em",
@@ -87,6 +91,18 @@ var styles = function styles(theme) {
     message: {
       display: "flex",
       alignItems: "center"
+    },
+    messageSuccess: {
+      color: "#fff"
+    },
+    messageError: {
+      color: "#fff"
+    },
+    messageInfo: {
+      color: "#fff"
+    },
+    messageWarning: {
+      color: "#fff"
     },
     wrappedRoot: {
       position: "relative",
@@ -183,7 +199,7 @@ var SnackbarItem = function SnackbarItem(_ref) {
 
   var getUnusedCallbacks = function getUnusedCallbacks() {
     return ["onEnter", "onEntering", "onExit", "onExiting"].reduce(function (acc, cbName) {
-      return _objectSpread({}, acc, _defineProperty({}, cbName, function () {
+      return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, cbName, function () {
         var snack = props.snack;
 
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -235,13 +251,13 @@ var SnackbarItem = function SnackbarItem(_ref) {
 
   var icon = iconVariant[variant];
 
-  var contentProps = _objectSpread({}, otherContentProps, {}, singleContentProps, {
+  var contentProps = _objectSpread(_objectSpread(_objectSpread({}, otherContentProps), singleContentProps), {}, {
     action: singleAction || singleContentProps.action || contentAction || action
   });
 
-  var transitionProps = _objectSpread({
+  var transitionProps = _objectSpread(_objectSpread(_objectSpread({
     direction: (0, _SnackbarItem.getTransitionDirection)(anchorOrigin)
-  }, otherTransitionProps, {}, singleTransitionProps, {
+  }, otherTransitionProps), singleTransitionProps), {}, {
     onExited: handleExitedScreen
   });
 
@@ -258,13 +274,13 @@ var SnackbarItem = function SnackbarItem(_ref) {
     snackContent = snackContent(key, snack.message);
   }
 
-  return _react["default"].createElement(_Collapse["default"], {
+  return /*#__PURE__*/_react["default"].createElement(_Collapse["default"], {
     unmountOnExit: true,
     timeout: 175,
     "in": collapsed,
     classes: (0, _SnackbarItem.omitNonCollapseKeys)(classes, dense),
     onExited: handleExited(key)
-  }, _react["default"].createElement(_Snackbar["default"], _extends({
+  }, /*#__PURE__*/_react["default"].createElement(_Snackbar["default"], _extends({
     TransitionComponent: TransitionComponent
   }, other, singleSnackProps, {
     open: snack.open,
@@ -273,13 +289,13 @@ var SnackbarItem = function SnackbarItem(_ref) {
     classes: (0, _SnackbarItem.omitNonMuiKeys)(classes),
     onClose: handleClose(key),
     onEntered: handleEntered(key)
-  }, getUnusedCallbacks()), snackContent || _react["default"].createElement(_SnackbarContent["default"], _extends({
+  }, getUnusedCallbacks()), snackContent || /*#__PURE__*/_react["default"].createElement(_SnackbarContent["default"], _extends({
     className: (0, _clsx["default"])(classes.base, classes["variant".concat((0, _constants.capitalise)(variant))], className, !hideIconVariant && icon && classes.lessPadding)
   }, contentProps, {
     "aria-describedby": ariaDescribedby,
-    message: _react["default"].createElement("span", {
+    message: /*#__PURE__*/_react["default"].createElement("span", {
       id: ariaDescribedby,
-      className: classes.message
+      className: (0, _clsx["default"])(classes.message, classes["message".concat((0, _constants.capitalise)(variant))])
     }, !hideIconVariant ? icon : null, snack.message),
     action: finalAction
   }))));

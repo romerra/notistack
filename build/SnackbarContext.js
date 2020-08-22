@@ -10,6 +10,6 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // @ts-ignore
-var _default = _react["default"].createContext();
+var _default = /*#__PURE__*/_react["default"].createContext();
 
 exports["default"] = _default;
