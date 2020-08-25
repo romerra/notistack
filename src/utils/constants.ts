@@ -2,7 +2,7 @@ import { SnackbarClassKey } from "@material-ui/core/Snackbar";
 import {
   CloseReason,
   ContainerClassKey,
-  SnackbarProviderProps
+  SnackbarProviderProps,
 } from "../index";
 import { SnackbarItemProps } from "../SnackbarItem";
 import { Snack } from "../SnackbarProvider";
@@ -18,7 +18,7 @@ export const allClasses: {
     anchorOriginTopRight: {},
     anchorOriginBottomRight: {},
     anchorOriginTopLeft: {},
-    anchorOriginBottomLeft: {}
+    anchorOriginBottomLeft: {},
   },
   container: {
     containerAnchorOriginTopCenter: {},
@@ -26,18 +26,18 @@ export const allClasses: {
     containerAnchorOriginTopRight: {},
     containerAnchorOriginBottomRight: {},
     containerAnchorOriginTopLeft: {},
-    containerAnchorOriginBottomLeft: {}
-  }
+    containerAnchorOriginBottomLeft: {},
+  },
 };
 
 export const MESSAGES = {
   NO_PERSIST_ALL:
-    "WARNING - notistack: Reached maxSnack while all enqueued snackbars have 'persist' flag. Notistack will dismiss the oldest snackbar anyway to allow other ones in the queue to be presented."
+    "WARNING - notistack: Reached maxSnack while all enqueued snackbars have 'persist' flag. Notistack will dismiss the oldest snackbar anyway to allow other ones in the queue to be presented.",
 };
 
 export const SNACKBAR_INDENTS = {
-  view: { default: 30, dense: 54 },
-  snackbar: { default: 6, dense: 0 }
+  view: { default: 30, dense: 58 },
+  snackbar: { default: 6, dense: 0 },
 };
 
 export const capitalise = (text: string): string =>
@@ -54,11 +54,11 @@ export const omitContainerKeys = (
 ): SnackbarItemProps["classes"] =>
   // @ts-ignore
   Object.keys(classes)
-    .filter(key => !allClasses.container[key])
+    .filter((key) => !allClasses.container[key])
     .reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {});
 
 export const REASONS: { [key: string]: CloseReason } = {
   CLICKAWAY: "clickaway",
   MAXSNACK: "maxsnack",
-  INSTRUCTED: "instructed"
+  INSTRUCTED: "instructed",
 };

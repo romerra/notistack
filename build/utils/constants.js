@@ -38,7 +38,7 @@ exports.MESSAGES = MESSAGES;
 var SNACKBAR_INDENTS = {
   view: {
     "default": 30,
-    dense: 54
+    dense: 58
   },
   snackbar: {
     "default": 6,
